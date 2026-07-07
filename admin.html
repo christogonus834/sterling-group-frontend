@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sterling Group — Admin</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/admin.css" />
+</head>
+<body class="admin">
+
+  <!-- ===================== LOGIN SCREEN ===================== -->
+  <section class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <div class="login-card__brand">
+        <span class="icon"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4 28 11v3L16 7 4 14v-3L16 4Z" fill="currentColor"/><path d="M7 15v13h18V15" stroke="currentColor" stroke-width="1.6"/><path d="M13 28v-7h6v7" stroke="currentColor" stroke-width="1.6"/></svg></span>
+        <span>Sterling Group</span>
+      </div>
+      <h1>Admin sign in</h1>
+      <p class="sub">One login manages both Lakeview Apartments and Specialist Hospital.</p>
+      <div class="login-error" id="loginError"></div>
+      <form class="login-form" id="loginForm">
+        <div class="form-field">
+          <label for="loginEmail" class="admin-label">Email</label>
+          <input type="email" id="loginEmail" class="admin-input" required autocomplete="username" />
+        </div>
+        <div class="form-field">
+          <label for="loginPassword" class="admin-label">Password</label>
+          <input type="password" id="loginPassword" class="admin-input" required autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn btn-login" id="loginSubmitBtn">Sign in</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================== ADMIN SHELL ===================== -->
+  <div class="admin-shell" id="adminShell">
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__brand">
+        <span class="icon"><svg viewBox="0 0 32 32" fill="none"><path d="M16 4 28 11v3L16 7 4 14v-3L16 4Z" fill="currentColor"/><path d="M7 15v13h18V15" stroke="currentColor" stroke-width="1.6"/><path d="M13 28v-7h6v7" stroke="currentColor" stroke-width="1.6"/></svg></span>
+        <span>Sterling Group</span>
+      </div>
+
+      <div class="admin-sidebar__nav-scroll">
+        <nav>
+          <div class="nav-group">
+            <p class="nav-group__label">Overview</p>
+            <button class="nav-item active" data-view="dashboard" data-icon="dashboard"><span class="icon"></span>Dashboard</button>
+            <button class="nav-item" data-view="notifications" data-icon="bell"><span class="icon"></span>Notifications<span class="nav-item__badge hidden" id="navNotifBadge">0</span></button>
+            <button class="nav-item" data-view="branding" data-icon="image"><span class="icon"></span>Branding &amp; Logos</button>
+            <button class="nav-item" data-view="profile" data-icon="userCircle"><span class="icon"></span>Profile Settings</button>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label">Lakeview Apartments</p>
+            <button class="nav-item" data-view="lv-bookings" data-icon="calendar"><span class="icon"></span>Bookings</button>
+            <button class="nav-item" data-view="lv-rooms" data-icon="bed"><span class="icon"></span>Rooms &amp; Apartments</button>
+            <button class="nav-item" data-view="lv-posts" data-icon="bookOpen"><span class="icon"></span>Journal Posts</button>
+            <button class="nav-item" data-view="lv-partners" data-icon="layers"><span class="icon"></span>Partners</button>
+            <button class="nav-item" data-view="lv-content" data-icon="layers"><span class="icon"></span>Page Content</button>
+          </div>
+          <div class="nav-group">
+            <p class="nav-group__label">Specialist Hospital</p>
+            <button class="nav-item" data-view="sh-appointments" data-icon="clock"><span class="icon"></span>Appointments</button>
+            <button class="nav-item" data-view="sh-doctors" data-icon="doctor"><span class="icon"></span>Doctors</button>
+            <button class="nav-item" data-view="sh-departments" data-icon="pulse"><span class="icon"></span>Departments</button>
+            <button class="nav-item" data-view="sh-posts" data-icon="bookOpen"><span class="icon"></span>Health Articles</button>
+            <button class="nav-item" data-view="sh-partners" data-icon="layers"><span class="icon"></span>Partners</button>
+            <button class="nav-item" data-view="sh-content" data-icon="layers"><span class="icon"></span>Page Content</button>
+          </div>
+        </nav>
+      </div>
+
+      <div class="admin-sidebar__footer">
+        <div class="admin-sidebar__user">
+          <strong id="sidebarAdminName">Admin</strong>
+          <span id="sidebarAdminEmail"></span>
+        </div>
+        <button class="nav-item" id="logoutBtn" data-icon="logout"><span class="icon"></span>Sign out</button>
+      </div>
+    </aside>
+
+    <main class="admin-main" id="adminMain">
+      <!-- Views are rendered into here by admin.js -->
+    </main>
+  </div>
+
+  <!-- ===================== SHARED MODAL ===================== -->
+  <div class="modal-backdrop" id="adminModal">
+    <div class="modal" id="adminModalInner" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <script src="/js/icons.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/admin.js"></script>
+  <script src="/js/admin-lakeview-views.js"></script>
+  <script src="/js/admin-hospital-views.js"></script>
+</body>
+</html>

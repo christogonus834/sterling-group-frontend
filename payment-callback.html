@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirming your payment — Sterling Lakeview Apartments</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="/css/base.css" />
+  <link rel="stylesheet" href="/css/lakeview.css" />
+  <style>
+    body.lakeview { display: flex; align-items: center; justify-content: center; min-height: 100vh; }
+    .callback-card {
+      max-width: 440px; width: 100%; margin: 24px; padding: 48px 36px;
+      text-align: center; border-radius: var(--radius-lg);
+      background: var(--paper-raised); box-shadow: var(--shadow-lift);
+    }
+    .callback-card .icon { width: 52px; height: 52px; margin: 0 auto 22px; }
+    .callback-card .icon.loading { color: var(--lv-primary); animation: spin 1.1s linear infinite; }
+    .callback-card .icon.success { color: var(--lv-primary); }
+    .callback-card .icon.failure { color: #8a2e1f; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .callback-card h1 { font-size: 21px; margin-bottom: 10px; }
+    .callback-card p { color: var(--ink-soft); font-size: 14.5px; line-height: 1.55; margin-bottom: 24px; }
+  </style>
+</head>
+<body class="lakeview">
+  <div class="callback-card">
+    <span class="icon loading" id="callbackIcon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9" stroke-dasharray="42" stroke-dashoffset="14" stroke-linecap="round"/></svg>
+    </span>
+    <h1 id="callbackTitle">Confirming your payment…</h1>
+    <p id="callbackMessage">Please wait while we verify your transaction with Paystack.</p>
+    <a href="/lakeview" class="btn btn-lv" id="callbackAction" style="display:none;">Back to Lakeview Apartments</a>
+  </div>
+  <script src="/js/icons.js"></script>
+  <script src="/js/config.js"></script>
+  <script src="/js/api.js"></script>
+  <script>
+    (async function () {
+      const params = new URLSearchParams(window.location.search);
+      const reference = params.get('reference') || params.get('trxref');
+      const iconEl = document.getElementById('callbackIcon');
+      const titleEl = document.getElementById('callbackTitle');
+      const msgEl = document.getElementById('callbackMessage');
+      const actionEl = document.getElementById('callbackAction');
+
+      if (!reference) {
+        iconEl.className = 'icon failure';
+        iconEl.innerHTML = ICONS.alertCircle;
+        titleEl.textContent = 'Missing payment reference';
+        msgEl.textContent = "We couldn't find a payment reference. If you completed payment, please contact the front desk.";
+        actionEl.style.display = 'inline-flex';
+        return;
+      }
+
+      try {
+        const result = await api.get(`/api/lakeview/payment-verify?reference=${encodeURIComponent(reference)}`);
+        if (result.success) {
+          iconEl.className = 'icon success';
+          iconEl.innerHTML = ICONS.checkCircle;
+          titleEl.textContent = 'Payment confirmed';
+          msgEl.textContent = 'Thank you — your booking is now confirmed. Our front desk has been notified.';
+        } else {
+          iconEl.className = 'icon failure';
+          iconEl.innerHTML = ICONS.alertCircle;
+          titleEl.textContent = 'Payment not completed';
+          msgEl.textContent = result.message || 'Your payment was not successful. Please try again or contact us directly.';
+        }
+      } catch (e) {
+        iconEl.className = 'icon failure';
+        iconEl.innerHTML = ICONS.alertCircle;
+        titleEl.textContent = 'Could not confirm payment';
+        msgEl.textContent = 'Something went wrong. Please contact the front desk with your reference: ' + reference;
+      } finally {
+        actionEl.style.display = 'inline-flex';
+      }
+    })();
+  </script>
+</body>
+</html>
