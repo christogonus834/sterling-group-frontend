@@ -10,5 +10,5 @@
 window.API_BASE_URL = (function () {
   const isLocal = ['localhost', '127.0.0.1'].includes(location.hostname);
   if (isLocal) return '';
-  return 'https://YOUR-RENDER-BACKEND-URL.onrender.com';
+  return 'https://sterling-group-backend.onrender.com';
 })();
