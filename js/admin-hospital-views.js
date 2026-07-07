@@ -35,7 +35,7 @@ async function loadAppointments(status = '') {
       return;
     }
     wrap.innerHTML = `
-      <table class="data-table">
+      <div class="table-scroll"><table class="data-table">
         <thead><tr><th>Patient</th><th>Doctor</th><th>Date &amp; time</th><th>Status</th><th></th></tr></thead>
         <tbody>
           ${appts.map((a) => `
@@ -56,7 +56,7 @@ async function loadAppointments(status = '') {
             </tr>
           `).join('')}
         </tbody>
-      </table>
+      </table></div>
     `;
 
     wrap.querySelectorAll('[data-action="status"]').forEach((sel) => {
@@ -294,7 +294,7 @@ async function loadDeptsManage() {
       return;
     }
     wrap.innerHTML = `
-      <table class="data-table">
+      <div class="table-scroll"><table class="data-table">
         <thead><tr><th></th><th>Name</th><th>Description</th><th>Status</th><th></th></tr></thead>
         <tbody>
           ${depts.map((d) => `
@@ -312,7 +312,7 @@ async function loadDeptsManage() {
             </tr>
           `).join('')}
         </tbody>
-      </table>
+      </table></div>
     `;
 
     wrap.querySelectorAll('[data-action="edit-dept"]').forEach((btn) => {

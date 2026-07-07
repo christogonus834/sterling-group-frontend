@@ -88,7 +88,7 @@ async function loadBookings(status = '') {
     };
 
     wrap.innerHTML = `
-      <table class="data-table">
+      <div class="table-scroll"><table class="data-table">
         <thead><tr><th>Guest</th><th>Room</th><th>Dates</th><th>Total</th><th>Payment</th><th>Status</th><th></th></tr></thead>
         <tbody>
           ${bookings.map((b) => `
@@ -111,7 +111,7 @@ async function loadBookings(status = '') {
             </tr>
           `).join('')}
         </tbody>
-      </table>
+      </table></div>
     `;
 
     wrap.querySelectorAll('[data-action="status"]').forEach((sel) => {

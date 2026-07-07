@@ -83,7 +83,10 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
 // SIDEBAR NAVIGATION
 // ---------------------------------------------------------
 document.querySelectorAll('.nav-item[data-view]').forEach((btn) => {
-  btn.addEventListener('click', () => navigateTo(btn.dataset.view));
+  btn.addEventListener('click', () => {
+    navigateTo(btn.dataset.view);
+    closeSidebar();
+  });
 });
 
 function navigateTo(view) {
@@ -128,7 +131,12 @@ async function refreshNotifBadge() {
 function topbar(title) {
   return `
     <div class="admin-topbar">
-      <h1>${title}</h1>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open menu">
+          <span class="icon">${icon('menu')}</span>
+        </button>
+        <h1>${title}</h1>
+      </div>
       <div class="admin-topbar__actions">
         <button class="bell-btn" id="topbarBell" title="Notifications">
           <span class="icon">${icon('bell')}</span>
@@ -147,7 +155,24 @@ function wireTopbarBell() {
     const navBadge = document.getElementById('navNotifBadge');
     if (dot) dot.classList.toggle('show', !navBadge.classList.contains('hidden'));
   });
+
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  if (sidebarToggle) sidebarToggle.addEventListener('click', openSidebar);
 }
+
+function openSidebar() {
+  document.getElementById('adminSidebar').classList.add('open');
+  document.getElementById('sidebarBackdrop').classList.add('show');
+  document.body.classList.add('sidebar-open');
+}
+
+function closeSidebar() {
+  document.getElementById('adminSidebar').classList.remove('open');
+  document.getElementById('sidebarBackdrop').classList.remove('show');
+  document.body.classList.remove('sidebar-open');
+}
+
+document.getElementById('sidebarBackdrop').addEventListener('click', closeSidebar);
 
 function statusPill(status) {
   return `<span class="pill-status ${status}">${status.charAt(0).toUpperCase() + status.slice(1)}</span>`;
