@@ -112,6 +112,19 @@ body.hospital { background: var(--paper); }
 .section-head h2 { font-size: clamp(28px, 3.6vw, 40px); color: var(--ink); }
 .section-head p { max-width: 420px; color: var(--stone); font-size: 15px; }
 
+/* Centered variant — heading + subtitle stacked, used for sections with a
+   single centered intro (process steps, FAQs) rather than the usual
+   two-column heading-left/description-right layout. */
+.section-head--center {
+  display: block;
+  text-align: center;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.section-head--center .ledger { margin-bottom: 22px; }
+.section-head--center p { max-width: none; margin: 0 auto; }
+
 /* ---------- Departments ---------- */
 .departments-grid {
   display: grid;
@@ -403,14 +416,14 @@ body.hospital { background: var(--paper); }
 .newsletter-bar {
   background: var(--sh-primary-deep);
   border-radius: var(--radius-lg);
-  padding: 26px 32px;
+  padding: 30px 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
 }
-.newsletter-bar__copy { display: flex; align-items: center; gap: 14px; max-width: 480px; }
+.newsletter-bar__copy { display: flex; align-items: center; gap: 14px; max-width: 480px; flex: 1 1 260px; }
 .newsletter-bar__icon {
   width: 42px; height: 42px; border-radius: 50%;
   background: rgba(255,255,255,0.1); flex-shrink: 0;
@@ -420,7 +433,12 @@ body.hospital { background: var(--paper); }
 .newsletter-bar__icon .icon { width: 18px; height: 18px; }
 .newsletter-bar__title { color: #fff; font-size: 15px; font-weight: 600; margin-bottom: 3px; }
 .newsletter-bar__desc { color: rgba(255,255,255,0.6); font-size: 13px; }
-.newsletter-form { display: flex; gap: 0; flex: 1; max-width: 420px; min-width: 260px; }
+.newsletter-form { display: flex; gap: 0; flex: 1 1 320px; max-width: 420px; }
+@media (max-width: 640px) {
+  .newsletter-bar { padding: 26px 22px; }
+  .newsletter-bar__copy,
+  .newsletter-form { flex: 1 1 100%; max-width: 100%; }
+}
 .newsletter-form input {
   flex: 1;
   padding: 13px 16px;

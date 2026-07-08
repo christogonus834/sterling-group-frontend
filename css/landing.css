@@ -17,23 +17,6 @@
   justify-content: space-between;
   height: 76px;
 }
-.brand-mark {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.brand-mark__glyph {
-  width: 28px;
-  height: 28px;
-  color: var(--ink);
-}
-.brand-mark__glyph svg { width: 100%; height: 100%; }
-.brand-mark__text {
-  font-family: var(--font-display);
-  font-size: 19px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
 .site-nav {
   display: flex;
   align-items: center;
