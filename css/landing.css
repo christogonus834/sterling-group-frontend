@@ -102,10 +102,10 @@ body.landing .ledger::after { background: var(--gr-red); }
   inset: 0;
 }
 .door--lakeview .door__media::after {
-  background: linear-gradient(180deg, rgba(94,49,25,0) 0%, rgba(46,22,11,0.92) 100%);
+  background: linear-gradient(180deg, rgba(238,59,52,0) 0%, rgba(20,15,60,0.92) 100%);
 }
 .door--hospital .door__media::after {
-  background: linear-gradient(180deg, rgba(13,39,51,0) 0%, rgba(8,23,30,0.92) 100%);
+  background: linear-gradient(180deg, rgba(20,15,60,0) 0%, rgba(20,15,60,0.92) 100%);
 }
 .door__media img {
   width: 100%;
@@ -148,7 +148,7 @@ body.landing .ledger::after { background: var(--gr-red); }
   font-size: 14px;
   font-weight: 600;
 }
-.door--lakeview .door__cta { color: #e7c98b; }
+.door--lakeview .door__cta { color: #ff9a94; }
 .door--hospital .door__cta { color: #9fd9c9; }
 .door__cta-icon {
   width: 16px; height: 16px;
