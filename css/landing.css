@@ -2,6 +2,16 @@
    Landing page — "two doors" portal
    ========================================================= */
 
+/* Sterling Group's own brand colors (from the group logo), scoped to the
+   landing page only — Lakeview and Hospital keep their own palettes. */
+body.landing {
+  --gr-navy: #140f3c;
+  --gr-red: #ee3b34;
+}
+body.landing ::selection { background: var(--gr-red); color: #fff; }
+body.landing .eyebrow { color: var(--gr-red); }
+body.landing .ledger::after { background: var(--gr-red); }
+
 /* ---------- Header ---------- */
 .site-header {
   position: sticky;
@@ -47,7 +57,7 @@
 .hero__title-em {
   font-style: italic;
   font-weight: 400;
-  background: linear-gradient(95deg, var(--lv-primary) 0%, var(--sh-primary) 100%);
+  background: linear-gradient(95deg, var(--gr-navy) 0%, var(--gr-red) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -190,5 +200,5 @@
   font-size: 38px;
   font-weight: 600;
   margin: 0;
-  color: var(--ink);
+  color: var(--gr-navy);
 }
