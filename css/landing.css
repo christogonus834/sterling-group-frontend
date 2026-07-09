@@ -17,10 +17,12 @@ body.landing .ledger::after { background: var(--gr-red); }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(248, 245, 239, 0.86);
+  background: rgba(20, 15, 60, 0.92);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
+.site-header .brand-mark__glyph,
+.site-header .brand-mark__text { color: #fff; }
 .site-header__inner {
   display: flex;
   align-items: center;
@@ -34,37 +36,47 @@ body.landing .ledger::after { background: var(--gr-red); }
   font-size: 14.5px;
   font-weight: 500;
 }
-.site-nav a { padding: 6px 0; position: relative; color: var(--ink-soft); }
-.site-nav a:hover { color: var(--ink); }
+.site-nav a { padding: 6px 0; position: relative; color: rgba(255,255,255,0.72); }
+.site-nav a:hover { color: #fff; }
 .site-nav__admin {
   padding: 8px 18px !important;
-  border: 1.5px solid var(--line);
+  border: 1.5px solid rgba(255,255,255,0.3);
   border-radius: 999px;
-  color: var(--ink) !important;
+  color: #fff !important;
 }
-.site-nav__admin:hover { border-color: var(--ink); }
+.site-nav__admin:hover { border-color: #fff; }
+.nav-toggle { color: #fff; }
+
+@media (max-width: 900px) {
+  body.landing .primary-nav {
+    background: var(--gr-navy);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  body.landing .primary-nav a { border-bottom-color: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85); }
+}
 
 /* ---------- Hero ---------- */
 .hero {
+  background: var(--gr-navy);
   padding: 96px 0 64px;
 }
 .hero__inner { max-width: 780px; }
 .hero__title {
   font-size: clamp(40px, 7vw, 76px);
-  color: var(--ink);
+  color: #fff;
   margin-bottom: 28px;
 }
 .hero__title-em {
   font-style: italic;
   font-weight: 400;
-  background: linear-gradient(95deg, var(--gr-navy) 0%, var(--gr-red) 100%);
+  background: linear-gradient(95deg, #ffffff 0%, var(--gr-red) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 .hero__lede {
   font-size: 19px;
-  color: var(--ink-soft);
+  color: rgba(255,255,255,0.72);
   max-width: 540px;
   line-height: 1.6;
 }
