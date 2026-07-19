@@ -4,6 +4,7 @@
     { "source": "/lakeview/payment-callback", "destination": "/payment-callback.html" },
     { "source": "/lakeview", "destination": "/lakeview.html" },
     { "source": "/hospital", "destination": "/hospital.html" },
+    { "source": "/board", "destination": "/board.html" },
     { "source": "/admin", "destination": "/admin.html" }
   ]
 }

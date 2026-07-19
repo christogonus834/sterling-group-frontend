@@ -151,6 +151,43 @@ body.hospital { background: var(--paper); }
 .dept-card__name { font-size: 14px; font-weight: 600; line-height: 1.3; }
 .dept-card__desc { font-size: 12.5px; color: var(--stone); line-height: 1.4; }
 
+/* ---------- Board of Directors page ---------- */
+.board-intro {
+  background: var(--sh-primary-deep);
+  padding: 72px 0 64px;
+}
+.board-intro .eyebrow { color: #9fd9c9; }
+.board-intro h1 { color: #fff; font-size: clamp(32px, 4.4vw, 48px); margin: 10px 0 16px; }
+.board-intro p { color: rgba(255,255,255,0.7); font-size: 16px; max-width: 620px; line-height: 1.6; }
+
+.board-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+@media (max-width: 980px) { .board-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 620px) { .board-grid { grid-template-columns: 1fr; } }
+
+.board-card {
+  background: var(--paper-raised);
+  border-radius: var(--radius-lg);
+  padding: 30px 26px;
+  box-shadow: var(--shadow-soft);
+  text-align: center;
+}
+.board-card__photo {
+  width: 108px;
+  height: 108px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 18px;
+  border: 3px solid var(--sh-tint);
+}
+.board-card__photo img { width: 100%; height: 100%; object-fit: cover; }
+.board-card__name { font-size: 17px; margin-bottom: 4px; }
+.board-card__role { font-size: 12.5px; font-weight: 600; color: var(--sh-teal); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 14px; }
+.board-card__bio { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; text-align: left; }
+
 /* ---------- Doctors slider ---------- */
 .doctors-slider {
   background: var(--sh-primary-deep);
